@@ -1,0 +1,31 @@
+{% extends 'index.html' %}
+
+{% block main %}
+    <div class="col-9">
+        <h2>
+            {{ title }}
+        </h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    {% for head in headers %}
+                        <th>
+                            {{ head }}
+                        </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for teacher in teachers_list %}
+                    <tr>
+                        {% for field in teacher %}
+                            <td>
+                                {{ field }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
