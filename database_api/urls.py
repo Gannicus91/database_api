@@ -21,11 +21,11 @@ from django.views.generic import RedirectView
 
 urlpatterns = [
     #    path('admin/', admin.site.urls),
-    url(r'^$', views.index, name='index'),
+    url(r'^$', RedirectView.as_view(url="teachers/", permanent=True), name='index'),
     url(r'^teachers/$', views.teachers, name='teachers'),
     url(r'^subjects/$', views.subjects, name='subjects'),
     url(r'^academic_plan/$', views.academic_plan, name='academic_plan'),
     url(r'^groups/$', views.groups, name='groups'),
-    url(r'^lessons/$', views.lessons, name='lessons')
+    url(r'^lessons/$', views.lessons, name='lessons'),
 
 ]

@@ -3,10 +3,6 @@ import psycopg2
 from contextlib import closing
 
 
-def index(request):
-    return render(request, 'index.html')
-
-
 def teachers(request):
     with closing(psycopg2.connect(dbname='university', user='maxim', password='password', host='localhost')) as conn:
         cursor = conn.cursor()
@@ -55,7 +51,7 @@ def academic_plan(request):
 
 
 def groups(request):
-    with closing(psycopg2.connect(dbname='university', user='maxim', password='password', host='localhost')) as conn:
+    with closing(psycopg2.connect(dbname='university', user='postgres', password='postgres', host='localhost')) as conn:
         cursor = conn.cursor()
         cursor.execute("SELECT * FROM groups ORDER BY id")
         teachers_list = cursor.fetchall()
