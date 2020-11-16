@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block main %}
+    <form id="edit-entity-form">
+        {% for key, value in item.items %}
+          <div class="form-group">
+            <label for="{{ key }}">{{ key}}</label>
+            <input {% if key == "id" %}disabled{% endif %} value="{{ value }}" type="text" class="form-control" id="{{ key }}" placeholder="Введите {{ key }}">
+          </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $('#edit-entity-form').submit(function ($e) {
+          $e.preventDefault();
+          var data = {
+            {% for key in item %}
+              {{ key }}: $('#{{ key }}').val(),
+            {% endfor %}
+          }
+          window.axios.patch('/api/v1/{{ table }}/{{ item_id }}/', data)
+            .then(function (res) {
+                window.location.href = '/{{ table }}/'
+            })
+            .catch(function (err) {
+                alert(err);
+            });
+        });
+    </script>
+{% endblock %}

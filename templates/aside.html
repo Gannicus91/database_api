@@ -3,11 +3,36 @@
         Существующие таблицы
     </h5>
     <ul class="nav flex-column">
-        <li class="nav-item"><a href="{% url 'subjects' %}" class="nav-link">Предметы</a></li>
-        <li class="nav-item"><a href="{% url 'teachers' %}" class="nav-link">Преподаватели</a></li>
-        <li class="nav-item"><a href="{% url 'academic_plan' %}" class="nav-link">Учебный план</a></li>
-        <li class="nav-item"><a href="{% url 'groups' %}" class="nav-link">Академические группы</a></li>
-        <li class="nav-item"><a href="{% url 'lessons' %}" class="nav-link">Проведенные занятия</a></li>
+        <li class="nav-item d-flex flex-row align-items-center">
+            <a href="/subjects/add/">
+                <i id="subjects" class="fas fa-plus-square"></i>
+            </a>
+            <a href="{% url 'subjects' %}" class="nav-link">Предметы</a>
+        </li>
+        <li class="nav-item d-flex flex-row align-items-center">
+            <a href="/teachers/add/">
+                <i id="teachers" class="fas fa-plus-square"></i>
+            </a>
+            <a href="{% url 'teachers' %}" class="nav-link">Преподаватели</a>
+        </li>
+        <li class="nav-item d-flex flex-row align-items-center">
+            <a href="/academic_plan/add/">
+                <i id="academic-plan" class="fas fa-plus-square"></i>
+            </a>
+            <a href="{% url 'academic_plan' %}" class="nav-link">Учебный план</a>
+        </li>
+        <li class="nav-item d-flex flex-row align-items-center">
+            <a href="/groups/add/">
+                <i id="groups" class="fas fa-plus-square"></i>
+            </a>
+            <a href="{% url 'groups' %}" class="nav-link">Академические группы</a>
+        </li>
+        <li class="nav-item d-flex flex-row align-items-center">
+            <a href="/lessons/add/">
+                <i id="lessons" class="fas fa-plus-square"></i>
+            </a>
+            <a href="{% url 'lessons' %}" class="nav-link">Проведенные занятия</a>
+        </li>
     </ul>
 </aside>
 

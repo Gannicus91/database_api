@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+
+{% block main %}
+    <form id="add-entity-form">
+        {% for col in colnames %}
+          <div class="form-group">
+            <label for="{{ col }}">{{ col}}</label>
+            <input type="text" class="form-control" id="{{ col }}" placeholder="Введите {{ col }}">
+          </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $('#add-entity-form').submit(function ($e) {
+          $e.preventDefault();
+          var data = {
+            {% for col in colnames %}
+              {{ col }}: $('#{{ col }}').val(),
+            {% endfor %}
+          }
+          window.axios.post('/api/v1/{{ table }}/', data)
+            .then(function (res) {
+                window.location.href = '/{{ table }}/'
+            })
+            .catch(function (err) {
+                alert(err);
+            });
+        });
+    </script>
+{% endblock %}

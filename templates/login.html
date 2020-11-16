@@ -1,0 +1,28 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <form id="login-form">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Имя пользователя</label>
+        <input type="text" class="form-control" id="login" aria-describedby="emailHelp" placeholder="Введите имя пользователя">
+      </div>
+      <div class="form-group">
+        <label for="password">Пароль</label>
+        <input type="password" class="form-control" id="password" placeholder="Пароль">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+{% endblock %}
+
+{% block script %}
+    <script>
+        $('#login-form').submit(function ($e) {
+          $e.preventDefault();
+          var login = $('#login').val();
+          var password = $('#password').val();
+          window.Cookies.set('db-login', login);
+          window.Cookies.set('db-password', password);
+          window.location.href = '/';
+        })
+    </script>
+{% endblock %}

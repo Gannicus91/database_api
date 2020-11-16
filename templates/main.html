@@ -1,0 +1,14 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <div class="row justify-content-center mb-3">
+        <h1>
+            База данных университета
+        </h1>
+    </div>
+    <div class="row">
+        {% include 'aside.html' %}
+        {% block main %}
+        {% endblock %}
+    </div>
+{% endblock %}
